@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-size: 16px;
+}
+
+
+.main{
+    border: 2px solid;
+}
+
+.bgg{
+    /* background: url(images/image1.jpg) ,fixed center; */
+    /* background-image: url(images/image1.jpg ), fixed center no-repeat; */
+}

@@ -1,0 +1,162 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(0, 145, 173) 100%);
+    height: 100vh;
+}
+
+.main {
+    /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(0, 145, 173) 100%);
+    /* height: 100vh; */ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10%;
+    /* backdrop-filter:blur(40%) ; */
+
+}
+
+.clock{
+    height: 100%;
+    width: 100%;
+    border-radius:10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background: rgba(255, 255, 255, 0.2);  */
+    /* border: 2px solid red; */
+    /* backdrop-filter:blur(40%) ; */
+}
+.clock span{
+    font-size: 70px;
+    color: white;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+
+}
+.clock::after{
+    content: "Hrs";
+    position: absolute;
+    left: 150px;
+    bottom: 20px;
+    color: white;
+    font-size: 20px;
+    /* content: "hour"; */
+
+
+}
+
+.clock::before{
+    content: "Min";
+    position: absolute;
+    right: 230px;
+    bottom: 20px;
+    color: white;
+    font-size: 20px;
+
+
+
+    /* content: "hour"; */
+}
+
+#sec::after{
+    content: "Sec";
+    position: absolute;
+    right: 20px;
+    bottom: -15px; 
+    color: white;
+    font-size: 22px;
+    
+}
+
+
+
+h1 {
+    border: 2px solid white;
+    color: white;
+}
+
+.cotainer {
+    height: 150px;
+    width: 500px;
+    background: linear-gradient(circle, rgba(0,27,36,0.8997724089635855) 0%, rgb(103, 83, 218) 35%, rgba(95, 120, 244, 0.756) 100%);
+    border-radius: 15px;
+    box-shadow: 10px 10px 100px #ffffff;
+    position: relative;
+    transition: all 0.3s ease; /* Add smooth transition for the rotation effect */
+}
+
+                        /* square */
+    .cotainer::before {
+    /* border: 2px solid red; */
+    content: "";
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    background: linear-gradient(28deg, rgba(255,210,230,1) 0%, rgba(110,169,238,1) 100%);
+    position: absolute;
+    left: -50px;
+    bottom: 20px;
+    /* z-index: -1; */
+    transition: transform 1s ease; /* Add transition for the rotate effect */
+}
+                  /* circle */
+    .cotainer::after {
+    content: "";
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: linear-gradient(28deg, rgb(249, 200, 222) 0%, rgb(96, 160, 234) 100%);
+    position: absolute;
+    right: -50px;
+    top: 20px;
+    /* z-index: -1; */
+    animation: spin 2s linear infinite;
+    transition: transform 1s ease; /* Add transition for the rotate effect */
+}
+
+/* On hover, rotate the before and after pseudo-elements */
+.cotainer:hover::before {
+    transform: rotate(45deg); /* Rotate the before element */
+}
+
+.cotainer:hover::after {
+    transform: rotate(-45deg); /* Rotate the after element */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* heading */
+.heading{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.heading p{
+    color: white;
+    font-size: 84px;
+    /* background-image: linear-gradient(); */
+    /* background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(0, 145, 173) 100%); */
+
+}

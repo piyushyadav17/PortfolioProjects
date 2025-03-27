@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .dice-main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .dice-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+
+        .player {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+            box-shadow: 2px 4px 10px rgb(0 0 0 / 20%);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        button {
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 40px;
+            box-shadow: 2px 4px 10px rgb(0 0 0 / 20%);
+            font-size: 20px;
+        }
+
+        button:hover {
+            background: rgb(0 0 0 / 70%);
+        }
+
+        /* button:active {
+            padding: 10px 25px;
+            width: auto;
+            height: auto;
+
+        } */
+
+
+        #result {
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            box-shadow: 2px 4px 10px rgb(0 0 0 / 20%);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dice-main">
+
+        <div class="dice-container">
+
+            <div class="player player1">
+                <h2 id="p1">Player 1 Dice</h2>
+                <img id="player1" src="images/image1.jpeg" alt="Player 1" />
+            </div>
+
+            <button id="roll">Roll</button>
+
+            <div class="player player2">
+                <h2 id="p2">Player 2 Dice</h2>
+                <img id="player2" src="images/image2.jpeg" alt="Player 2" />
+            </div>
+
+        </div>
+        <p id="result">Get Result</p>
+    </div>
+    <script>
+
+
+
+        function dice() {
+
+           
+
+            let player1 = Math.floor(Math.random() * 6) + 1;
+            let player2 = Math.floor(Math.random() * 6) + 1;
+
+
+                         // just to debuging is player1 or player2 is geeting value or not
+
+            // console.log(player1);
+            // console.log(player2);
+
+            document.querySelector("#player1").src = "images/image" + player1 + ".jpeg";
+            document.querySelector("#player2").src = "images/image" + player2 + ".jpeg";
+
+            // let result = document.querySelector("#result");
+            let result = document.getElementById("result");
+
+              if (player1 > player2) {
+                result.innerHTML = "Player 1 Wins!";
+              } else if (player1 == player2) {
+                result.innerHTML = "It's a Tie!";
+              } else {
+                result.innerHTML = "Player 2 Wins!";
+              }
+        }
+
+        document.querySelector("#roll").addEventListener("click", dice);
+
+
+
+
+        // function clebration(){
+
+
+
+        // }
+
+
+    </script>
+</body>
+
+</html>
