@@ -1,53 +1,64 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>button</title>
+    <title>Gradient Button</title>
     <style>
-        .main{
-            background-color: rgba(27, 26, 26, 0.192);
-            height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            background-color: rgba(27, 26, 26, 0.192);
+        }
+
+        .button-container {
             text-align: center;
         }
 
-        button{
+        button {
             padding: 1em 2em;
+            font-size: 1.2rem;
+            font-weight: bold;
             background-color: #161a20;
-            border: none;
             color: #f0f0f0;
-            border-radius: 1000px;
+            border: none;
+            border-radius: 50px;
             position: relative;
-            
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
         }
 
-        button::after{
+        button::before {
             content: "";
             position: absolute;
-            height: 107%;
-            width: 102%;
-            border-radius: 1000px;
-            background-image: linear-gradient( to bottom right,hsl(240, 87%, 48%), hsl(300, 73%, 43%));
+            inset: -3px;
+            background: linear-gradient(to bottom right, hsl(240, 87%, 58%), hsl(300, 73%, 53%));
+            border-radius: inherit;
             z-index: -1;
-            /* border: none; */
-            
-        }
-        button:hover{
-            z-index: 0;
-            
+            transition: opacity 0.3s ease;
         }
 
-        
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
-    <div class="main">
-        <button>gradient button</button>
+    <div class="button-container">
+        <button>Gradient Button</button>
     </div>
 </body>
 </html>
