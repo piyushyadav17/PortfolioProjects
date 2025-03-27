@@ -3,44 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clock with setTimeout</title>
+  <title>Stopwatch</title>
   <style>
-    #clock {
-      font-size: 48px;
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #282c34;
+      color: #fff;
       font-family: Arial, sans-serif;
+    }
+
+    #stopwatch {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .start { background: #4caf50; color: white; }
+    .stop { background: #f44336; color: white; }
+    .reset { background: #2196f3; color: white; }
+
+    button:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
-  <div id="clock">00:00:00</div>
+
+  <div id="stopwatch">00:00:00</div>
+
+  <div class="buttons">
+    <button class="start" onclick="startStopwatch()">Start</button>
+    <button class="stop" onclick="stopStopwatch()">Stop</button>
+    <button class="reset" onclick="resetStopwatch()">Reset</button>
+  </div>
 
   <script>
-function updateClock() {
-  let now = new Date();
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  let seconds = now.getSeconds();
+    let milliseconds = 0, seconds = 0, minutes = 0;
+    let interval = null;
+    let isRunning = false;
 
-  // Pad the time with leading zeros if necessary
-  hours = hours < 10 ? '0' + hours : hours;
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  seconds = seconds < 10 ? '0' + seconds : seconds;
+    function updateDisplay() {
+      document.getElementById("stopwatch").textContent = 
+        `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(milliseconds).padStart(2, "0")}`;
+    }
 
-  // Format the time as HH:MM:SS
-  let timeString = `${hours}:${minutes}:${seconds}`;
+    function startStopwatch() {
+      if (!isRunning) {
+        isRunning = true;
+        interval = setInterval(() => {
+          milliseconds += 1;
+          if (milliseconds >= 100) {
+            milliseconds = 0;
+            seconds += 1;
+          }
+          if (seconds >= 60) {
+            seconds = 0;
+            minutes += 1;
+          }
+          updateDisplay();
+        }, 10);
+      }
+    }
 
-  // Display the time on the webpage
-  document.getElementById('clock').textContent = timeString;
+    function stopStopwatch() {
+      clearInterval(interval);
+      isRunning = false;
+    }
 
-  // Call the updateClock function again after 1000ms (1 second)
-  setTimeout(updateClock, 1000);
-}
+    function resetStopwatch() {
+      clearInterval(interval);
+      isRunning = false;
+      milliseconds = 0;
+      seconds = 0;
+      minutes = 0;
+      updateDisplay();
+    }
 
-// Start the clock
-updateClock();
-
+    updateDisplay(); 
   </script>
 
-  <!-- <script src="clock.js"></script> -->
 </body>
 </html>
